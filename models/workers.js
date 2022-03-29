@@ -6,7 +6,7 @@ exports.getAll = async function getAll (page, limit, order){
 }
 
 exports.getByID = async function getByID (id){
-  let data = await dbMongo.run_query('workers', {'staffID': parseInt(id)})
+  let data = await dbMongo.run_query('workers', {'workerID': parseInt(id)})
   return data
 }
 
