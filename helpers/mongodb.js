@@ -8,7 +8,7 @@ const CONNECTION_URI = `mongodb+srv://${mongo_username}:${mongo_password}@${mong
 const DATABASE_NAME = mongoAuth.configMongo.dbname
 
 exports.run_query = async function run_query(collection, query){
-  const dbClient = await mongoClient.connect(CONNECT_URL)
+  const dbClient = await mongoClient.connect(CONNECTION_URI)
   const result = await dbClient.db(DATABASE_NAME).collection(collection).find(query).toArray()
   return result
 }

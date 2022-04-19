@@ -1,14 +1,13 @@
 const Koa = require('koa');
-const Router = require('koa-router');
-
+//const Router = require('koa-router');
 const app = new Koa();
-const router = new Router();
+//const router = new Router();
+//router.get('/api/v1', welcomeAPI);
+const worker = require('./routes/workers.js')
 
-router.get('/api/v1', welcomeAPI);
-app.use(router.routes());
+app.use(worker.routes());
 
-function welcomeAPI(ctx, next) {
-  ctx.body = {message: "Welcome to the blog API!"}
-}
+let port = process.env.PORT || 10888;
 
-app.listen(3000);
+app.listen(port);
+console.log('API is ready')

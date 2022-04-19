@@ -11,6 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "koa": "^2.13.4",
-    "koa-router": "^10.1.1"
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^10.1.1",
+    "mongodb": "^4.5.0",
+    "sequelize": "^6.19.0"
   }
 }
