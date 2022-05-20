@@ -20,6 +20,12 @@ exports.del = async function del (id){
   return status
 }
 
+exports.findByUsername = async function getByUsername(workerLoginAcc) {
+  let user = await dbMongo.run_query('workers', {'workerLoginAcc' : workerLoginAcc})
+  console.log(user)
+  return user;
+}
+
 exports.updateMongo = async function update (id, newvalues){
   let updateString = "{$set:" + JSON.stringify(newvalues)
   updateString+="}"

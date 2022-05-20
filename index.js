@@ -1,10 +1,10 @@
 const Koa = require('koa');
-//const Router = require('koa-router');
 const app = new Koa();
-//const router = new Router();
-//router.get('/api/v1', welcomeAPI);
-const worker = require('./routes/workers.js')
 
+const worker = require('./routes/workers.js')
+const special = require('./routes/special')
+
+app.use(special.routes())
 app.use(worker.routes());
 
 let port = process.env.PORT || 10888;

@@ -1,10 +1,11 @@
 const Router = require('koa-router')
 const bodyParser = require('koa-bodyparser')
 const model = require('../models/workers')
+const auth = require('../controllers/auth');
 
-const router = Router({prefix: '/api/v1/workers'})
+const router = Router({prefix: '/api/v1/private/workers'})
 
-router.get('/', getAll)
+router.get('/', auth, getAll)
 router.post('/', bodyParser(), createWorker)
 router.get('/:id([0-9]{1,})', getByID)
 router.put('/:id([0-9]{1,})', updateWorker)
