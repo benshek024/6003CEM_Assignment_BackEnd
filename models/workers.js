@@ -26,7 +26,7 @@ exports.findByUsername = async function getByUsername(workerLoginAcc) {
   return user;
 }
 
-exports.updateMongo = async function update (id, newvalues){
+exports.update = async function update (id, newvalues){
   let updateString = "{$set:" + JSON.stringify(newvalues)
   updateString+="}"
   console.log("updateString ", updateString)
