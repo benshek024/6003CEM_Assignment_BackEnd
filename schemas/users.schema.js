@@ -5,27 +5,31 @@ module.exports = {
   "description": "A worker in shelter",
   "type": "object",
   "properties": {
-    "workerLoginAcc": {
+    "usersLoginAcc": {
       "description": "Worker's account name",
       "type": "string"
     },
-    "workerLoginPwd": {
+    "usersLoginPwd": {
       "description": "Worker's login password",
       "type": "string"
     },
-    "workerEmail": {
+    "usersEmail": {
       "description": "Worker's personal email",
       "type": "string"
     },
-    "workerName": {
+    "usersName": {
       "description": "Worker's name",
       "type": "string"
     },
-    "workerID": {
+    "usersID": {
       "description": "worker's unique ID",
       "type": "integer",
       "minimum": 0
     },
+    "usersRole": {
+      "description": "User's role",
+      "type": "string"
+    }
   },
   "required": ["workerLoginAcc", "workerLoginPwd", "workerEmail", "workerName", "workerID"]
 }

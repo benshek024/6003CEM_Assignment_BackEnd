@@ -1,9 +1,9 @@
 const BasicStrategy = require('passport-http').BasicStrategy;
-const users = require('../models/workers');
+const users = require('../models/users');
 
 const verifyPassword = function (user, password) {
   console.log(password)
-  return user.workerLoginPwd === password;
+  return user.usersLoginPwd === password;
 }
 
 const checkUserAndPass = async (username, password, done) => {
