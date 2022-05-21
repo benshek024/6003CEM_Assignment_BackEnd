@@ -1,0 +1,71 @@
+openapi: 3.0.0
+info:
+ version: 1.0.0
+ title: Back End Demonstration API
+ description: A simple blog API.
+ contact:
+ name: Ben Shek
+ email: 217107208@stu.vtc.edu.hk
+ license:
+ name: Apache 2.0
+ url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+servers:
+ - url: 'https://6003CEMAssignmentBackEnd.benshek024.repl.co'
+ description: Development server
+tags:
+ - name: Users
+   description: API endpoints for user management.
+ - name: Dogs
+   description: Access and perform CRUD operations on dog entries.
+paths:
+ /dogs/{id}:
+  parameters:
+    - in: path
+      name: id
+      schema:
+        type: integer
+      required: true
+      description: Numeric id of the dogs
+  get:
+    tags:
+      - Dogs
+    description:
+      Get dogs by id.
+    responses:
+      '200':
+        description: View of dogs
+      '404':
+        description: Dogs was not found in the DB.
+  post:
+    tags:
+      - Dogs
+    description:
+      Create a new article.
+    requestBody:
+      description: All new dog data.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: ./dog.json#/definitions/dog
+    responses:
+      '201':
+        description: Dog created
+  put:
+      tags:
+        - Dogs
+      description: Update dogs by ID.
+      responses:
+        '200':
+          description: Update confirmation and link to record.
+        '404':
+          description: Dogs was not found in the DB.
+    delete:
+      tags:
+        - Dogs
+      description: Delete dogs by ID.
+    responses:
+        '200':
+          description: Delete confirmation.
+        '404':
+          description: Dogs was not found in the DB.

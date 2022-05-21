@@ -6,7 +6,7 @@ exports.getAll = async function getAll (page, limit, order){
 }
 
 exports.getByID = async function getByID (id){
-  let data = await dbMongo.run_query('users', {'users': parseInt(id)})
+  let data = await dbMongo.run_query('users', {'usersID': parseInt(id)})
   return data
 }
 
@@ -16,7 +16,7 @@ exports.add = async function add (document){
 }
 
 exports.del = async function del (id){
-  let status = await dbMongo.run_del('users', {'users': parseInt(id)})
+  let status = await dbMongo.run_del('users', {'usersID': parseInt(id)})
   return status
 }
 

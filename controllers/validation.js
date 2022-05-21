@@ -1,5 +1,5 @@
 const {Validator, ValidationError} = require('jsonschema');
-const dogSchema = require('../schemas/dogs.schema.js');
+const dogSchema = require('../schemas/dog.schema.js');
 const v = new Validator();
 
 exports.validateDog = async (ctx, next) => {
