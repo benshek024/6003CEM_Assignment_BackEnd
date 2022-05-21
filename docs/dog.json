@@ -4,7 +4,7 @@
     "dog": {
   "id": "/dog",
   "title": "Dog",
-  "description": "An Dog in the website",
+  "description": "A dog in the website",
   "type": "object",
   "properties": {
     "dogName": {

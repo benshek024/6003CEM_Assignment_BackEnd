@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "user": {
+  "id": "/user",
+  "title": "User",
+  "description": "A user in the website",
+  "type": "object",
+  "properties": {
+    "usersLoginAcc": {
+      "description": "User's account name",
+      "type": "string"
+    },
+    "usersLoginPwd": {
+      "description": "User's login password",
+      "type": "string",
+    },
+    "usersEmail": {
+      "description": "User's personal email",
+      "type": "string",
+    },
+    "usersName": {
+      "description": "User's name",
+      "type": "string"
+    },
+    "usersID": {
+      "description": "User's unique ID",
+      "type": "integer",
+      "minimum": 0
+    },
+    "usersRole": {
+      "description": "User's role",
+      "type": "string"
+    }
+  },
+  "required": ["usersLoginAcc", "usersLoginPwd", "usersEmail", "usersName", "usersID", "usersRole"],
+  "additionalProperties": false
+  }
+  }
+}
