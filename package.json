@@ -20,6 +20,7 @@
     "koa-static-router": "^1.5.0",
     "mime-types": "^2.1.35",
     "mongodb": "^4.5.0",
+    "mongodb-autoincrement": "^1.0.1",
     "passport-http": "^0.3.0",
     "request": "^2.88.2",
     "role-acl": "^4.5.4",

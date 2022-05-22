@@ -21,8 +21,13 @@ exports.del = async function del (id){
 }
 
 exports.findByUsername = async function getByUsername(usersLoginAcc) {
-  let user = await dbMongo.run_query('users', {'usersLoginAcc' : usersLoginAcc})
-  console.log(user)
+  let user = await dbMongo.run_check(usersLoginAcc)
+  if (user) {
+    console.log(`User found`)
+  }
+  else {
+    console.log(`User not found`)
+  }
   return user;
 }
 

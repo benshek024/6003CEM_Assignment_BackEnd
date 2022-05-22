@@ -41,10 +41,20 @@ async function getByID(ctx){
 
 async function createUsers(ctx){
   const body = ctx.request.body
-  let result = await model.add(body)
+  let result = await model.findByUsername(body.usersLoginAcc)
+  console.log(body)
+  console.log(body.usersLoginAcc)
   if (result) {
-    ctx.status = 201
-    ctx.body = result
+    console.log(result)
+    console.log("User already exist!")
+  } else {
+    let result = await model.add(body)
+    if (result) {
+      ctx.status = 201
+      ctx.body = result
+      console.log(result)
+      console.log("Success!")
+    }
   }
 }
 

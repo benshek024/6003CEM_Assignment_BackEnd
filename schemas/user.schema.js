@@ -7,7 +7,7 @@ module.exports = {
   "properties": {
     "usersLoginAcc": {
       "description": "User's account name",
-      "type": "string"
+      "type": "string",
     },
     "usersLoginPwd": {
       "description": "User's login password",
@@ -21,7 +21,7 @@ module.exports = {
       "description": "User's name",
       "type": "string"
     },
-    "usersID": {
+    "_id": {
       "description": "User's unique ID",
       "type": "integer",
       "minimum": 0

@@ -13,6 +13,25 @@ exports.run_query = async function run_query(collection, query){
   return result
 }
 
+exports.run_findOne = async function run_query(collection, query){
+  const dbClient = await mongoClient.connect(CONNECTION_URI)
+  const result = dbClient.db(DATABASE_NAME).collection(collection).findOne(query).toArray()
+  return result
+}
+
+exports.run_check = async function isUsernameTaken(userData)
+{
+  const dbClient = await mongoClient.connect(CONNECTION_URI)
+  const res = await dbClient.db('tcsdb').collection('users').findOne({ usersLoginAcc: userData });
+    try{
+        console.log(userData)
+        console.log(res);
+        return !!res; // Casts truthy/falsy value to boolean. This does in fact return a value from isUsernameTaken().
+    } catch(err) {
+        throw err;
+    }
+}
+
 exports.run_insert = async function run_insert(collection, document){
   const dbClient = await mongoClient.connect(CONNECTION_URI)
   const result = await dbClient.db(DATABASE_NAME).collection(collection).insertOne(document)
