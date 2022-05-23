@@ -20,6 +20,17 @@ exports.delDog = async function delDog (id) {
   return status
 }
 
+exports.checkDogID = async function checkByDogID(dogID) {
+  let dog = await dbMongo.run_checkD(dogID)
+  if (dog) {
+    console.log(`Dog found`)
+  }
+  else {
+    console.log(`Dog not found`)
+  }
+  return dog;
+}
+
 exports.findByDogname = async function getByDogname(dogName) {
   let dog = await dbMongo.run_query('dogs', {'dogName' : dogName})
   console.log(dog)

@@ -49,11 +49,20 @@ async function getByDogID(ctx) {
 }
 
 async function createDog(ctx) {
-  const body = ctx.request.body
-  let result = await model.addDog(body)
+  let id = ctx.request.body
+  console.log(id)
+  console.log(id.dogID)
+  let result = await model.checkDogID(id.dogID)
   if (result) {
-    ctx.status = 201
-    ctx.body = result
+    console.log(result)
+    console.log("Dog ID used!")
+  } else {
+    const body = ctx.request.body
+    let dog = await model.addDog(body)
+    if (dog) {
+      ctx.status = 201
+      ctx.body = dog
+    }
   }
 }
 
