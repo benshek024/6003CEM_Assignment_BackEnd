@@ -31,5 +31,5 @@ module.exports = {
       "type": "string"
     }
   },
-  "required": ["usersLoginAcc", "usersLoginPwd", "usersEmail", "usersName"]
+  "required": ["usersLoginAcc", "usersLoginPwd"]
 }

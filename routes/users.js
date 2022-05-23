@@ -5,13 +5,15 @@ const model = require('../models/users')
 const can = require('../permissions/users');
 const auth = require('../controllers/auth');
 
-const router = Router({prefix: '/api/v1/users'})
+const prefix = '/api/v1/users'
+const router = Router({prefix: prefix});
 
 router.get('/', auth, getAll)
 router.post('/', bodyParser(), validateUser, createUsers)
 router.get('/:id([0-9]{1,})', auth, getByID)
 router.put('/:id([0-9]{1,})', validateUser, updateUsers)
 router.del('/:id([0-9]{1,})', auth, deleteUsers)
+router.post('/login', login)
 
 async function getAll(ctx, next){
   const permission = can.readAll(ctx.state.user);
@@ -26,7 +28,7 @@ async function getAll(ctx, next){
 }
 
 async function getByID(ctx){
-  const permission = can.read(ctx.state.user);
+  const permission = can.read(ctx.state.user, ctx.state.id);
   if (!permission.granted) {
     ctx.status = 403;
   } else {
@@ -57,6 +59,26 @@ async function createUsers(ctx){
     }
   }
 }
+
+async function login(ctx) {
+  const body = ctx.request.body
+  console.log(body)
+  let accResult = await model.findByPassword(body.usersLoginPwd)
+  if (accResult) {
+    console.log("Account Match!")
+  }
+}
+
+/*
+async function login(ctx) {
+  // return any details needed by the client
+  const {usersID, usersLoginAcc, usersEmail, usersTelNum, usersName} = ctx.state.user
+  const links = {
+    self: `https://${ctx.host}${prefix}/${usersID}`
+  }
+  ctx.body = {usersID, usersLoginAcc, usersEmail, usersTelNum, usersName,  links};
+}
+*/
 
 async function updateUsers(ctx){
   let id = ctx.params.id

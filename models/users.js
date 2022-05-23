@@ -31,6 +31,11 @@ exports.findByUsername = async function getByUsername(usersLoginAcc) {
   return user;
 }
 
+exports.findByPassword = async function getByPassword(usersLoginPwd) {
+  let user = await dbMongo.run_query('users', {'usersLoginPwd': usersLoginPwd})
+  return user;
+}
+
 exports.update = async function update (id, newvalues){
   let updateString = "{$set:" + JSON.stringify(newvalues)
   updateString+="}"

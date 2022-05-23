@@ -28,7 +28,7 @@
       "type": "integer",
       "minimum": 0
     },
-    "usersRole": {
+    "role": {
       "description": "User's role",
       "type": "string"
     }

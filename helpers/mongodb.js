@@ -13,6 +13,12 @@ exports.run_query = async function run_query(collection, query){
   return result
 }
 
+exports.run_search = async function run_query(collection, field, query){
+  const dbClient = await mongoClient.connect(CONNECTION_URI)
+  const result = await dbClient.db(DATABASE_NAME).collection(collection).find(field, query).toArray()
+  return result
+}
+
 exports.run_findOne = async function run_query(collection, query){
   const dbClient = await mongoClient.connect(CONNECTION_URI)
   const result = dbClient.db(DATABASE_NAME).collection(collection).findOne(query).toArray()

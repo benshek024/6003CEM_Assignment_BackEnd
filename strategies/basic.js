@@ -10,7 +10,7 @@ const checkUserAndPass = async (username, password, done) => {
   let result;
 
   try {
-    result = await users.findByUsername(username);
+    result = await users.findByPassword(username);
   } catch (error) {
     console.error(`Error during authentication for user ${username}`);
     return done(error);

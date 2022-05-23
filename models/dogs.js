@@ -26,6 +26,18 @@ exports.findByDogname = async function getByDogname(dogName) {
   return dog;
 }
 
+exports.findByAdoptable = async function getByAdoptable(adoptable) {
+  let dog = await dbMongo.run_query('dogs', {'adoptable' : adoptable})
+  console.log(dog)
+  return dog;
+}
+
+exports.getSearch = async function getSearch(fields, q) {
+  let dog = await dbMongo.run_query('dogs', {fields : {$in : q}})
+  console.log(dog)
+  return dog;
+}
+
 exports.updateDog = async function updateDog (id, newvalues) {
   let updateString = "{$set:"+ JSON.stringify(newvalues)
   updateString+="}"

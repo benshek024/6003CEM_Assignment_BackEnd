@@ -25,14 +25,14 @@
     },
     "adoptable": {
       "description": "Is the dog adoptable or not",
-      "type": "boolean"
+      "type": "adoptable"
     },
     "dogID": {
       "description": "dog's unique ID",
       "type": "integer",
       "minimum": 0
     },
-  "required": ["dogName", "dogBody", "dogID"],
+  "required": ["dogName", "dogBody", "dogID", "adoptable"],
   "additionalProperties": false
   }
   }

@@ -23,7 +23,7 @@ module.exports = {
     },
     "adoptable": {
       "description": "Is the dog adoptable or not",
-      "type": "boolean"
+      "type": "string"
     },
     "_id": {
       "description": "dog's unique ID",
