@@ -29,8 +29,7 @@
     },
     "dogID": {
       "description": "dog's unique ID",
-      "type": "integer",
-      "minimum": 0
+      "type": "string"
     },
   "required": ["dogName", "dogBody", "dogID", "adoptable"],
   "additionalProperties": false

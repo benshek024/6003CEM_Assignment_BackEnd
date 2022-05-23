@@ -25,7 +25,7 @@ module.exports = {
       "description": "Is the dog adoptable or not",
       "type": "string"
     },
-    "_id": {
+    "dogID": {
       "description": "dog's unique ID",
       "type": "integer",
       "minimum": 0
