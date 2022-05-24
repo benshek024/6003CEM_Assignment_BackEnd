@@ -25,6 +25,12 @@ exports.run_findOne = async function run_query(collection, query){
   return result
 }
 
+exports.run_findOneTest = async function run_query(collection, query){
+  const dbClient = await mongoClient.connect(CONNECTION_URI)
+  const result = dbClient.db(DATABASE_NAME).collection(collection).findOne(query)
+  return result
+}
+
 exports.run_check = async function isUsernameTaken(userData)
 {
   const dbClient = await mongoClient.connect(CONNECTION_URI)
@@ -59,12 +65,12 @@ exports.run_insert = async function run_insert(collection, document){
 
 exports.run_del = async function run_del(collection, query){
   const dbClient = await mongoClient.connect(CONNECTION_URI)
-  const result = await dbClient.db(DATABASE_NAME).collection(collection).remove(query)
+  const result = await dbClient.db(DATABASE_NAME).collection(collection).deleteOne(query)
   return {"status":201, "description": "Data removed successfully"}
 }
 
 exports.run_update = async function run_update(collection, query, newvalues){
   const dbClient = await mongoClient.connect(CONNECTION_URI)
-  const result = await dbClient.db(DATABASE_NAME).collection(collection).replaceOne(query,newvalues)
+  const result = await dbClient.db(DATABASE_NAME).collection(collection).replaceOne(query, newvalues)
   return {"status":201, "description": "Data updated successfully"}
 }

@@ -31,6 +31,12 @@ exports.checkDogID = async function checkByDogID(dogID) {
   return dog;
 }
 
+exports.testFind = async function testFind(dogID) {
+  let dog = await dbMongo.run_findOneTest('dogs', {'dogID': parseInt(dogID)})
+  console.log(dog)
+  return dog;
+}
+
 exports.findByDogname = async function getByDogname(dogName) {
   let dog = await dbMongo.run_query('dogs', {'dogName' : dogName})
   console.log(dog)
@@ -53,6 +59,7 @@ exports.updateDog = async function updateDog (id, newvalues) {
   let updateString = "{$set:"+ JSON.stringify(newvalues)
   updateString+="}"
   console.log("updateString ", updateString)
+  console.log("Passed ID: ", id)
   let status = await dbMongo.run_update('dogs', {'dogID' : parseInt(id)}, newvalues)
   return status
 }

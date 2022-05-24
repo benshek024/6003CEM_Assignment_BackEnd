@@ -66,6 +66,7 @@ async function createDog(ctx) {
   }
 }
 
+/*
 async function searchDog(ctx, next){
 const permission = can.readAll(ctx.state.user);
  if (!permission.granted) {
@@ -110,21 +111,42 @@ const permission = can.readAll(ctx.state.user);
     }
   }
 }
+*/
 
 async function deleteDog(ctx) {
-  let id = ctx.params.id
-  let dog = await model.delDog(id)
-  if (dog) {
-    ctx.body = `Dog with DogID ${id} deleted`
+  let dogID = ctx.params.id
+  console.log("ctx ", ctx.params.id)
+  let result = await model.testFind(dogID)
+  if (!result) {
+    console.log("No Record on Dog!")
+  } else {
+    console.log("Deleting Dog!")
+    let dog = await model.delDog(dogID)
+    if (dog) {
+      ctx.body = `Dog with DogID ${id} deleted`
+    }
   }
 }
 
 async function updateDog(ctx) {
-  let id = ctx.params.id
-  let updateDog = ctx.request.body
-  let dog = await model.updateDog(id, updateDog)
-  if (dog) {
-    ctx.body = `Dog with DogID ${id} updated`
+  let dogBody = ctx.request.body
+  let dogID = dogBody.dogID
+  console.log("Dog Body")
+  console.log(JSON.stringify(dogBody))
+  console.log(`Received Dog ID ${dogID}`)
+  let result = await model.checkDogID(dogBody.dogID)
+  if (!result) {
+    console.log("Result: ", result)
+    console.log("Dog ID Not Found!")
+  } else {
+    console.log("Updating Dog's Information")
+    let dog = await model.updateDog(dogID, dogBody)
+    if (dog) {
+      ctx.body = `Dog with DogID ${dogID} updated`
+      console.log(`Dog with DogID ${dogID} updated`)
+    } else {
+      console.log(`Something went wrong. Unable to update Dog with DogID ${dogID}`)
+    }
   }
 }
 
