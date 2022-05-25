@@ -66,53 +66,6 @@ async function createDog(ctx) {
   }
 }
 
-/*
-async function searchDog(ctx, next){
-const permission = can.readAll(ctx.state.user);
- if (!permission.granted) {
-    ctx.status = 403;
-  } else {
-    let {limit=20, page=1, fields="",q=""} = ctx.request.query;
-
-    // ensure params are integers
-    limit = parseInt(limit);
-    page = parseInt(page);
-    
-    // validate values to ensure they are sensible
-    limit = limit > 100 ? 100 : limit;
-    limit = limit < 1 ? 10 : limit;
-    page = page < 1 ? 1 : page;
-   let result="";
-  // search by single field and field contents 
-   //need to validate q input
-  if (q!="")
-    result= await model.getSearch(fields, q)
-    else
-    result= await model.getAll(limit, page);
-    if (result.length) {
-      if (fields !== null) {
-    // first ensure the fields are contained in an array
-    // need this since a single field in the query is passed as a string
-    if (!Array.isArray(fields)) {
-      fields = [fields];
-    }
-    // then filter each row in the array of results
-    // by only including the specified fields
-    result = result.map(record => {
-      partial = {};
-      for (field of fields) {                                 
-          partial[field] = record[field];
-      }
-      
-      return partial;
-    });      
-  }
-  ctx.body = result;
-    }
-  }
-}
-*/
-
 async function deleteDog(ctx) {
   let dogID = ctx.params.id
   console.log("ctx ", ctx.params.id)
